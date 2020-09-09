@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: go-hpa
+spec:
+    selector:
+        app: go-hpa
+    type: LoadBalancer
+    ports:
+    - port: 8000
+
+# LoadBalancer http://35.202.161.69:8000/
+# kubectl exec busybox -- wget -q -O- http://35.202.161.69:8000/
+# kubectl exec -it busybox /bin/sh
+# while true; do wget -q -O- http://35.202.161.69:8000/; done;
+
+# kubectl run -it busybox --image=busybox /bin/sh
+# wget -q -O- http://35.202.161.69:8000/;
+# while true; do wget -q -O- http://35.202.161.69:8000/; done;
+
+# ClusterIP
+# kubectl run go-hpa --image=robsoni/go-hpa --requests=cpu=50m --expose --port=80    # Este comando cria o service do tipo ClusterIP
+# kubectl run -it busybox --image=busybox /bin/sh
+# wget -q -O- http://go-hpa.default.svc.cluster.local;
+# while true; do wget -q -O- http://go-hpa.default.svc.cluster.local; done;
+# kubectl exec busybox -- wget -q -O- http://go-hpa.default.svc.cluster.local
+# kubectl exec busybox -- while true; do wget -q -O- http://go-hpa.default.svc.cluster.local; done;
