@@ -3,3 +3,4 @@ steps:
   name: 'gcr.io/cloud-builders/go'
   args: ['test', './src/hpa']
   env: ['GOPATH=.']
+  
